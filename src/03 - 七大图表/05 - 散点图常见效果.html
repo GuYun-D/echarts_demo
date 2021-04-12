@@ -36,7 +36,18 @@
             },
             series: [
                 {
-                    type: 'scatter', // 指明图表的类型为散点图
+                    /**
+                     * 涟漪动画
+                     * type: 'effectScatter'
+                     * rippleEffect: 控制效果,多大范围
+                     * showEffectOn: 涟漪动画触发时机：render一直就有， emphasis：鼠标放上去开始
+                    */
+                    // type: 'scatter', // 指明图表的类型为散点图
+                    type: 'effectScatter',
+                    rippleEffect: {
+                        scale: 10
+                    },
+                    showEffectOn: 'emphasis',
                     data: axisData,
 
                     /**
