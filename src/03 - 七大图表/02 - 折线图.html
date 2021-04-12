@@ -17,9 +17,6 @@
         var xDataArr = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         var yDataArr = [3000, 2800, 900, 1000, 800, 700, 1400, 1300, 900, 1000, 800, 600]
         var option = {
-            /**
-             * 标记：最大值，最小值，平均值，标注区间
-            */
             xAxis: {
                 type: 'category',
                 data: xDataArr
@@ -32,6 +29,9 @@
                     name: '康师傅',
                     data: yDataArr,
                     type: 'line', // 设置图表类型为 折线图
+                    /**
+                     * 标记：最大值，最小值，平均值，标注区间
+                    */
                     markPoint: {
                         data: [
                             {
@@ -77,6 +77,17 @@
                                 }
                             ]
                         ]
+                    },
+
+                    /**
+                     * smooth: 线条是否平滑
+                     * lineStyle: 线条样式
+                    */
+                    smooth: true,
+                    lineStyle: {
+                        color: 'green',
+                        // 线条样式，dashed:虚线，dotted：点线， solid：实线
+                        type: 'dotted'
                     }
                 }
             ]
