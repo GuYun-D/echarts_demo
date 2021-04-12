@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>echarts</title>
+    <!-- 引入js文件 -->
+    <script src="../lib/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 2.准备呈现图标的盒子 -->
+    <div style="width: 600px; height: 400px;"></div>
+
+    <script>
+        /**
+         * 3.初始化echarts实例对象
+         * init（）方法传参dom，决定最终呈现的位置
+        */
+        var mCharts = echarts.init(document.querySelector('div'))
+
+        /**
+         * 4.准备配置项
+        */
+        var option = {
+            // 标题
+            title: {
+                text: "学生语文成绩",
+                // 主表题点击的超链接
+                link: "http://www.baidu.com",
+                typeStyle: {
+                    color: "#f40"
+                }
+            },
+            xAxis: {
+                type: "category",
+                data: ["小明", "小红", "小王"]
+            },
+
+            yAxis: {
+                type: "value"
+            },
+
+            series: {
+                name: "语文",
+                type: "bar",
+                data: [70, 90, 89]
+            }
+        }
+
+        // 5将配置项给echarts实例对象
+        mCharts.setOption(option)
+    </script>
+
+</body>
+
+</html>

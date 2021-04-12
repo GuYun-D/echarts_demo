@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/echarts.min.js"></script>
+</head>
+
+<body>
+    <div style="width: 800px; height: 400px;"></div>
+
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'))
+
+        // x数据
+        var xData = ["陈翔", "球球", "腿腿", "猪小明", "茅台", "冷檬", "妹大爷"]
+        // y
+        var yData = [89, 68, 90, 67, 88, 78, 90]
+
+        var option = {
+            title: {
+
+            },
+
+            // xAxis: {
+            //     type: "category",
+            //     data: xData
+            // },
+
+            // yAxis: {
+            //     type: "value"
+
+            // },
+
+            // 反向
+            xAxis: {
+                type: "value"
+            },
+
+            yAxis: {
+                type: "category",
+                data: xData
+
+            },
+
+            series: [
+                /**
+                 * 标记
+                 * 最大值，最小值：markPoint
+                 * 平均值: 平均值
+                */
+
+                /***
+                 * 显示
+                 * 数值显示：label
+                 */
+                {
+                    name: "语文",
+                    type: "bar",
+                    markPoint: {
+                        data: [
+                            {
+                                type: 'max', name: "最大值"
+                            },
+                            {
+                                type: 'min', name: '最小值'
+                            }
+                        ]
+                    },
+
+                    markLine: {
+                        data: [
+                            {
+                                type: "average",
+                                name: "平均值"
+                            }
+                        ]
+                    },
+
+                    label: {
+                        // show: 是否显示数值
+                        // rotate：文字旋转
+                        // 数值显示位置
+                        // top / left / right / bottom / inside / insideLeft / insideRight / insideTop / insideBottom / insideTopLeft / insideBottomLeft / insideTopRight / insideBottomRight
+                        show: true,
+                        rotate: 60,
+                        position: "left"
+                    },
+
+                    // 柱的宽度
+                    barWidth: '30%',
+                    data: yData
+                }
+            ]
+        }
+
+        mCharts.setOption(option)
+    </script>
+</body>
+
+</html>
