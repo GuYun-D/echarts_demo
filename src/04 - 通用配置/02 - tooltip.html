@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../../lib/echarts.min.js"></script>
+
+</head>
+
+<body>
+    <div style="width: 800px; height: 400px;"></div>
+
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'))
+
+        // x数据
+        var xData = ["陈翔", "球球", "腿腿", "猪小明", "茅台", "冷檬", "妹大爷"]
+        // y
+        var yData = [89, 68, 90, 67, 88, 78, 90]
+
+        var option = {
+            /**
+             * tooptip：提示框组件，用于配置鼠标滑过或者点击图表时的显示框
+             * 1.触发类型 trigger
+             *      iten：鼠标进入图表时触发
+             *      axis: 鼠标在轴上就触发
+             * 2.触发时机 triggerOn
+             *      mouseover：鼠标滑过
+             *      click：点击
+             * 3.格式化 formatter
+             *      字符串模板
+             *      回调函数
+            */
+            tooltip: {
+                // trigger: "item"
+                trigger: "axis", // 坐标轴触发
+                triggerOn: "click",
+                // formatter: "{b} 的成绩是 {c}"
+                formatter: function(arg){
+                    return arg[0].name + "的分数是" + arg[0].data
+                }
+            },
+
+            xAxis: {
+                type: "category",
+                data: xData
+            },
+
+            yAxis: {
+                type: "value"
+
+            },
+
+            series: [
+                {
+                    name: "语文",
+                    type: "bar",
+                    data: yData
+                }
+            ]
+        }
+
+        mCharts.setOption(option)
+    </script>
+</body>
+
+</html>
