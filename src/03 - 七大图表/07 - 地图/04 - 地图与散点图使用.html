@@ -53,6 +53,13 @@
             { name: '澳门', value: 77 },
             { name: '南海诸岛', value: 55 }
         ]
+
+        // 产生涟漪动画的坐标
+        var scatterData = [
+            {
+                value: [117.283042, 31.86119]
+            }
+        ]
         // 通过ajax获取数据
         $.get('../../../lib/map data/china.json', function (res) {
             // res就是地图数据
@@ -87,6 +94,16 @@
                 series: [
                     {
                         data: airData, geoIndex: 0, type: 'map'
+                    },
+
+                    // 1
+                    {
+                        data: scatterData,
+                        type: "effectScatter",
+                        coordinateSystem: 'geo',   // 指明散点图使用的坐标系统，geo坐标系统
+                        rippleEffect: {
+                            scale: 10
+                        }
                     }
                 ],
 
