@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../lib/echarts.min.js"></script>
+    <script src="../../../lib/jquery.min.js"></script>
+</head>
+
+<body>
+    <div style="width: 800px; height: 400px;"></div>
+
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'))
+        // 通过ajax获取数据
+        $.get('../../../lib/map data/province/anhui.json', function (res) {
+            // res就是地图数据
+            console.log(res);
+            // 注册地图矢量数据
+            echarts.registerMap('anhuiMap', res)
+            var option = {
+                // 配置geo
+                geo: {
+                    type: "map",
+                    map: "anhuiMap",
+                    /**
+                     * 缩放拖动
+                     * roam
+                    */
+
+                    roam: true,
+
+                    /**
+                     * 展示标签,名称的显示 label
+                    */
+                    label: {
+                        show: true,
+                    },
+
+                    // 初始缩放比例
+                    zoom: 1,
+
+                    // 地图的中心点,经度纬度
+                    center: [116.507676, 31.752889]
+                },
+
+
+            }
+            mCharts.setOption(option)
+        })
+
+
+
+    </script>
+</body>
+
+</html>
