@@ -37,7 +37,36 @@
             series: [
                 {
                     type: "pie",
-                    data: pieData
+                    data: pieData,
+                    // 饼图的文字显示
+                    label: {
+                        show: true,
+                        // formatter: "234",  // 决定文字显示的内容是
+                        formatter: function (arg) {
+                            // console.log(arg);
+                            return arg.name + "平台支付了" + arg.value + "元\n" + arg.percent + "%"
+                        }
+                    },
+                    /**
+                     * 饼图外观设置
+                     * radius：圆环半径
+                     *         - 数值
+                     *         - 百分比：饼图所在容器的范围的小边
+                     *         - 内圆半径，外圆半径
+                    */
+                    // radius: ['50%', '75%'],
+
+                    /**
+                     * 南丁格尔图，就是每一块半径不同
+                    */
+                    roseType: "radius",
+
+                    /**
+                     * 选中效果
+                    */
+                    selectedMode: 'single',  // 选中的区域偏离原点
+                    // selectedMode: 'multiple',  // 选中的区域偏离原点
+                    selectedOffset: 30,  // 偏移的距离
                 }
             ]
         }
