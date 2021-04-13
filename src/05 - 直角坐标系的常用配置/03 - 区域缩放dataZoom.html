@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/echarts.min.js"></script>
+</head>
+
+<body>
+    <div style="width: 800px; height: 400px;"></div>
+
+    <script>
+        var mEcharts = echarts.init(document.querySelector('div'))
+        var xDataArr = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
+        var yDataArr = [3000, 2800, 900, 1000, 800, 700, 1400, 1300, 900, 1000, 800, 600]
+        var option = {
+            /**
+             * dataZoom：用于区域缩放，对数据范围进行过滤，x轴和y轴都有
+             *           数组形式，可以有多个区域缩放器
+             * 1.type类型
+             *        slider：滑块,底部滑块显示
+             *        inside：内置，依靠鼠标滚轮或者双指缩放
+             * 2.知名产生的作用轴
+             *        xAsisIndex: 设置缩放组件控制的是哪一个x轴，一般写0
+             *        yAsisIndex: 设置缩放组件控制的是哪一个y轴，一般写0
+             * 3.指明初始状态下的缩放情况
+             *        
+            */
+            dataZoom: [
+                {
+                    type: "slider",
+                    // type: "slider"
+                    xAsisIndex: 0,
+                    start: 0,
+                    end: 50
+                },
+                {
+                    type: "slider",
+                    yAsisIndex: 0,
+                    
+                }
+            ],
+            xAxis: {
+                boundaryGap: false,
+                type: 'category',
+                data: xDataArr
+            },
+            yAxis: {
+                scale: true,
+                type: 'value'
+            },
+            series: [
+                {
+                    name: '康师傅',
+                    data: yDataArr,
+                    type: 'line'
+
+                }
+            ]
+        }
+        mEcharts.setOption(option)
+
+
+
+    </script>
+</body>
+
+</html>
