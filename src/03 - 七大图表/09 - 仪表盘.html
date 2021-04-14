@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+       仪表盘
+     -->
+    <div style="width: 800px; height: 400px;"></div>
+
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'));
+
+        var option = {
+            series: [
+                {
+                    type: "gauge",
+                    data: [
+                        {
+                            value: 97,
+                            // 指针样式的配置
+                            itemStyle: {
+                                color: "pink"
+                            }
+                        },
+                        {
+                            value: 70
+                        }
+                    ],
+                    /**
+                     * min
+                     * max
+                     * 仪表盘的数值范围
+                    */
+                    min: 50
+                }
+            ]
+
+        }
+
+        mCharts.setOption(option)
+    </script>
+</body>
+
+</html>
