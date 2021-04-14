@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../lib/echarts.min.js"></script>
+    <script src="../../../lib/jquery.min.js"></script>
+</head>
+
+<body>
+    <div style="width: 600px;height:400px"></div>
+    <script>
+        var mCharts = echarts.init(document.querySelector("div"))
+        // 显示加载动画
+        mCharts.showLoading()
+        $.get('../../../lib/test_data.json', function (res) {
+            // 数据加载成功后关闭加载动画
+            mCharts.hideLoading()
+            var axisData = []
+            for (var i = 0; i < res.length; i++) {
+                var height = res[i].height
+                var weight = res[i].weight
+                var newArr = [height, weight]
+                axisData.push(newArr)
+            }
+            console.log(axisData)
+            var option = {
+                xAxis: {
+                    type: 'value',
+                    scale: true
+                },
+                yAxis: {
+                    type: 'value',
+                    scale: true
+                },
+                series: [
+                    {
+                        type: 'scatter', // 指明图表的类型为散点图
+                        data: axisData
+                    }
+                ]
+            }
+            mCharts.setOption(option)
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>

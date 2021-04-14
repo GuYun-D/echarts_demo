@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../lib/echarts.min.js"></script>
+</head>
+
+<body>
+    <div style="width: 800px; height: 400px;"></div>
+    <!-- 
+        动画配置项
+        1.开启动画
+            animation： true
+        2.动画时长
+            animationDuration: 5000/function
+        3.缓动动画
+            animationEasing：'bounceOut'/"linear"  回弹、匀速
+        4.动画的阈值
+            animationThreshold：8
+            同一类的元素超过阈值就会失去动画效果
+     -->
+
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'))
+        var xData = ["陈翔", "球球", "腿腿", "猪小明", "茅台", "冷檬", "妹大爷"]
+        var yData = [89, 68, 90, 67, 88, 78, 90]
+
+        var option = {
+            animation: true,
+            // animationDuration: 4000,
+            animationDuration: function (arg) {
+                // 打印的就是当前图表中的个体的代号，markdown文件
+                console.log(arg);
+                if (arg === 0){
+                    return 4000
+                }
+                return arg * 2000
+            },
+            animationEasing:'bounceOut',
+            animationThreshold: 10,
+            xAxis: {
+                type: "value"
+            },
+
+            yAxis: {
+                type: "category",
+                data: xData
+
+            },
+
+            series: [
+                {
+                    name: "语文",
+                    type: "bar",
+                    markPoint: {
+                        data: [
+                            {
+                                type: 'max', name: "最大值"
+                            },
+                            {
+                                type: 'min', name: '最小值'
+                            }
+                        ]
+                    },
+
+                    markLine: {
+                        data: [
+                            {
+                                type: "average",
+                                name: "平均值"
+                            }
+                        ]
+                    },
+
+                    label: {
+                        show: true,
+                        rotate: 60,
+                        position: "left"
+                    },
+                    barWidth: '30%',
+                    data: yData
+                }
+            ]
+        }
+        mCharts.setOption(option)
+    </script>
+</body>
+
+</html>
