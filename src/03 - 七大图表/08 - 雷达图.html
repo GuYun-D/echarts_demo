@@ -52,6 +52,17 @@
             series: [
                 {
                     type: "radar",
+                    /**
+                     * 显示文字
+                    */
+                    label: {
+                        show: true
+                    },
+                    /**
+                     * 区域面积
+                     * 将每一个产品的雷达图形成阴影
+                    */
+                   areaStyle: {},
                     data: [
                         {
                             name: "华为手机",
@@ -65,7 +76,12 @@
                 }
             ],
             radar: {
-                indicator: dataMax
+                indicator: dataMax,
+                /**
+                 * 绘制图形,雷达图最外层的图形
+                */
+               shape: "circle"
+
             }
         }
 
