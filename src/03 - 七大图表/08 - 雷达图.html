@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../lib/echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- 
+        雷达图
+        echarts基本结构
+        定义各个维度的最大值
+            indicator: [{name: "易用性", max: 100}, ....]
+        准备具体产品数据
+            data: [{name: "华为手机"，value:[80,90,80,82,90]}]
+        图表类型
+            type：radar
+     -->
+    <div style="width: 800px; height: 400px;"></div>
+
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'));
+
+        var dataMax = [
+            {
+                name: "易用性",
+                max: 100
+            },
+            {
+                name: "功能",
+                max: 100
+            },
+            {
+                name: "拍照",
+                max: 100
+            },
+            {
+                name: "跑分",
+                max: 100
+            },
+            {
+                name: "续航",
+                max: 100
+            }
+        ]
+
+        var option = {
+            series: [
+                {
+                    type: "radar",
+                    data: [
+                        {
+                            name: "华为手机",
+                            value: [80, 90, 80, 82, 90]
+                        },
+                        {
+                            name: "小米",
+                            value: [70, 82, 75, 70, 78]
+                        }
+                    ]
+                }
+            ],
+            radar: {
+                indicator: dataMax
+            }
+        }
+
+        mCharts.setOption(option)
+    </script>
+</body>
+
+</html>
