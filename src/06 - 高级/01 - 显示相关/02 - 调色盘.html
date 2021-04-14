@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../lib/echarts.min.js"></script>
+    <script src="../../../theme/westeros.js"></script>
+</head>
+
+<body>
+    <!-- 
+        调色盘
+        主题调色盘
+        全局调色盘
+        局部调色盘
+     -->
+
+    <div style="width: 800px; height: 400px;"></div>
+
+    <script>
+        var mCharts = echarts.init(document.querySelector('div'), "westeros")
+        var pieData = [
+            {
+                name: "淘宝",
+                value: 11231
+            }, {
+                name: "京东",
+                value: 22673
+            }, {
+                name: "唯品会",
+                value: 6123
+            }, {
+                name: "1号店",
+                value: 8989
+            }, {
+                name: "拼多多",
+                value: 1131
+            }
+        ]
+        var option = {
+            // color: [
+            //     "red",
+            //     "green",
+            //     "pink",
+            //     "blue",
+            //     "yellow"
+            // ],
+            series: [
+                {
+                    type: "pie",
+                    data: pieData,
+                    label: {
+                        show: true,
+                        formatter: function (arg) {
+                            return arg.name + "平台支付了" + arg.value + "元\n" + arg.percent + "%"
+                        }
+                    },
+                    selectedMode: 'single',
+                    selectedOffset: 30,
+                    color: [
+                        "red",
+                        "green",
+                        "pink",
+                        "blue",
+                        "yellow"
+                    ],
+                }
+            ]
+        }
+
+        mCharts.setOption(option)
+    </script>
+</body>
+
+</html>
